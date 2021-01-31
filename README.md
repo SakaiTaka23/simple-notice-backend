@@ -1,4 +1,4 @@
-# simpleNoticeBackend
+# simple-notice-backend
 
 * アンケートを取るようなアプリケーションを作成する
 

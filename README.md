@@ -46,35 +46,54 @@
 
 * 必要になりそうなテーブル
 
-**Survay**
+### relation
+
+* survey has many question
+* question is owned by survey
+
+
+
+* survey has many result
+* result is owned by survey
+
+**Survey**
 
 * 調査の元データを格納
+* 問題数、回答者数とかはリレーションで計算したい→カラムには入れない
+* 出題者はログイン機能を作成するならnullableにしてidとか保存したほうがいいかも?
 
-| column | type | description |
-| ------ | ---- | ----------- |
-|        |      |             |
-|        |      |             |
-|        |      |             |
+| column      | type   | description                          |
+| ----------- | ------ | ------------------------------------ |
+| id          | id     |                                      |
+| owner       | string | 出題者                               |
+| from        | date   | 解答期間いつから                     |
+| to          | date   | いつまで                             |
+| delete_pass | string | アンケートを削除するためのパスワード |
 
-**question**
+**questions**
 
 * 調査の質問を格納
 
-| column | type | description |
-| ------ | ---- | ----------- |
-|        |      |             |
-|        |      |             |
-|        |      |             |
+| column          | type               | description  |
+| --------------- | ------------------ | ------------ |
+| id              | id                 |              |
+| survey_id       | unsignedBigInteger | relation     |
+| question_number | number             | 質問の順番   |
+| type            | string             | inputの種類  |
+| name            | string             | htmlのname   |
+| title           | string             | 質問の内容   |
+| is_required     | boolean            | 必須かどうか |
+| choices         | json nullable      | 選択肢       |
 
 **result**
 
 * 回答のデータ格納
+* 未完成
 
-| column | type | description |
-| ------ | ---- | ----------- |
-|        |      |             |
-|        |      |             |
-|        |      |             |
+| column    | type               | description |
+| --------- | ------------------ | ----------- |
+| id        | id                 |             |
+| survey_id | unsignedBigInteger | relation    |
 
 
 

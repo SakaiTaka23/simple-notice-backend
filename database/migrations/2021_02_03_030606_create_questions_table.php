@@ -15,7 +15,12 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('survey_id');
+            $table->integer('question_number');
+            $table->string('type');
+            $table->string('name');
+            $table->boolean('is_required');
+            $table->json('choices')->nullable();
         });
     }
 

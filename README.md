@@ -32,7 +32,7 @@
 
 ## ルーティング
 
-* idはhashedidを使いたいな!
+* idはhashedidを使いたいな! **laravel-hashidsを確認**
 * apiなので前に http://localhost/api/ がつく
 
 | route       | method | description              |
@@ -85,5 +85,6 @@
 
 * [ ] 必要な値をもとにapiの形を定義
 * [ ] idから情報を取得
+* [ ] laravel-hashidsを確認
 * [ ] 回答可能アンケート表示→今のところ期限を設けることはしなくていいかも?
 

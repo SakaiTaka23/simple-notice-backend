@@ -20,8 +20,8 @@ class SurveyController extends Controller
      */
     public function getSurveys()
     {
-        $survey = json_encode($this->repository->getSurveyOverviews());
-        return $survey;
+        $surveys = json_encode($this->repository->getSurveyOverviews());
+        return $surveys;
     }
 
     /**
@@ -31,6 +31,7 @@ class SurveyController extends Controller
      */
     public function searchFromId(Request $request)
     {
-        return 'searchFromId';
+        $survey = json_encode($this->repository->getSurveyQuestions('0dc13eea-8b76-33a6-b4d6-40a33b113d76'));
+        return $survey;
     }
 }

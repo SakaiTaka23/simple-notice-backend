@@ -16,10 +16,12 @@ class Survey extends Model
         'to'
     ];
 
-    public $timestamps = false;
-    
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
     public $incrementing = false;
 
+    public $timestamps = false;
+    
     public function questions()
     {
         return $this->hasMany(Question::class);

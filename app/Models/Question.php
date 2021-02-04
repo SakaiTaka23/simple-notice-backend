@@ -9,6 +9,11 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+         'is_required' => 'boolean',
+        'choices' => 'array'
+    ];
+
     protected $fillable = [
         'survey_id',
         'question_number',

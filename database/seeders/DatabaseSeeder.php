@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Survey::factory(10)->has(Question::factory()->count(5)
-        ->state(function(array $attributes,Survey $survey){
-            return ['survey_id'=>$survey->id];
-        }),'questions')->create();
+       $survey = Survey::factory()->create();
+       $survey->each(function ($s) {
+        $s->questions()->saveMany(Question::factory(5)->make());
+        });
     }
 }

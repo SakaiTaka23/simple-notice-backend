@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('survey_id');
+            $table->uuid('survey_id');
             $table->integer('question_number');
             $table->string('type');
             $table->string('name');

@@ -22,7 +22,7 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            // 'survey_id'=>$this->faker->uuid,
+            'survey_id'=>$this->faker->uuid,
             'question_number'=>$this->faker->randomDigit(),
             'type'=>$this->faker->randomElement(['text','checkbox','radio']),
             'name'=>$this->faker->name,

@@ -17,6 +17,8 @@ class Survey extends Model
     ];
 
     public $timestamps = false;
+    
+    public $incrementing = false;
 
     public function questions()
     {

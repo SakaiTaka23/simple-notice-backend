@@ -16,11 +16,15 @@ class Survey extends Model
         'to'
     ];
 
-    public function question(){
+    public $timestamps = false;
+
+    public function question()
+    {
         return $this->hasMany(Question::class);
     }
 
-    public function result(){
+    public function result()
+    {
         return $this->hasMany(Result::class);
     }
 }

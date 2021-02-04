@@ -13,7 +13,8 @@ class Result extends Model
         'survey_id',
     ];
 
-    public function survey(){
+    public function survey()
+    {
         return $this->belongsTo(Survey::class);
     }
 }

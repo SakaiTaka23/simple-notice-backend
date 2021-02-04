@@ -11,7 +11,8 @@ class SurveyController extends Controller
      * 返り値の情報はまだ未定
      * @return obj json
      */
-    public function getSurveys(){
+    public function getSurveys()
+    {
         return 'getSurveys';
     }
 
@@ -20,7 +21,8 @@ class SurveyController extends Controller
      * 返り値の情報はまだ未定
      * @return obj json
      */
-    public function searchFromId(Request $request){
+    public function searchFromId(Request $request)
+    {
         return 'searchFromId';
     }
 }

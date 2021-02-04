@@ -4,8 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Service\SurveyRepositoryInterface;
+
 class SurveyController extends Controller
 {
+    public function __construct(SurveyRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * indexページを作成するためのオブジェクトを返却
      * 返り値の情報はまだ未定
@@ -13,7 +20,8 @@ class SurveyController extends Controller
      */
     public function getSurveys()
     {
-        return 'getSurveys';
+        $survey = json_encode($this->repository->getSurveyOverviews());
+        return $survey;
     }
 
     /**

@@ -30,10 +30,10 @@ class QuestionFactory extends Factory
             'is_required'=>$this->faker->boolean,
             'choices'=>json_encode($this->faker->randomElements([
             "house",
-            "flat", 
-            "apartment", 
-            "room", "shop", 
-            "lot", "garage"],3)),
+            "flat",
+            "apartment",
+            "room", "shop",
+            "lot", "garage"], 3)),
         ];
     }
 }

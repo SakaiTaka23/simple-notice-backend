@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Question;
+use App\Models\Survey;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Survey::factory(10)->create();
-        \App\Models\Question::factory(20)->create();
+        Survey::factory(10)->has(Question::factory()->count(5)
+        ->state(function(array $attributes,Survey $survey){
+            return ['survey_id'=>$survey->id];
+        }),'questions')->create();
     }
 }

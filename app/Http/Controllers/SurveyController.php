@@ -31,7 +31,8 @@ class SurveyController extends Controller
      */
     public function searchFromId(Request $request)
     {
-        $survey = json_encode($this->repository->getSurveyQuestions('0dc13eea-8b76-33a6-b4d6-40a33b113d76'));
+        $uuid = $request->uuid;
+        $survey = json_encode($this->repository->getSurveyQuestions($uuid));
         return $survey;
     }
 }

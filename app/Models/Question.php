@@ -10,7 +10,7 @@ class Question extends Model
     use HasFactory;
 
     protected $casts = [
-         'is_required' => 'boolean',
+        'is_required' => 'boolean',
         'choices' => 'array'
     ];
 

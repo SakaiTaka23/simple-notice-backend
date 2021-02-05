@@ -110,4 +110,6 @@
 * [ ] 回答可能アンケート表示→今のところ期限を設けることはしなくていいかも?
 * [x] surveyテーブルにtitle,descriptionを付け加えてapiにも反映させること
 * [x] survey apiにdelete keyを流さないようにすること
+* [ ] survey / id の時もdelete keyを流さないようにすること
+* [ ] choicesを文字列ではなく配列に直す
 

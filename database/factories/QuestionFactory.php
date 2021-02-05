@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class QuestionFactory extends Factory
 {
@@ -21,6 +22,7 @@ class QuestionFactory extends Factory
      */
     public function definition()
     {
+        $choices = ['a','b','c','d','e','f'];
         return [
             'survey_id'=>$this->faker->uuid,
             'question_number'=>$this->faker->randomDigit(),
@@ -28,12 +30,7 @@ class QuestionFactory extends Factory
             'name'=>$this->faker->name,
             'title'=>$this->faker->sentence,
             'is_required'=>$this->faker->boolean,
-            'choices'=>json_encode($this->faker->randomElements([
-            "house",
-            "flat",
-            "apartment",
-            "room", "shop",
-            "lot", "garage"], 3)),
+            'choices'=>Arr::random($choices,3),
         ];
     }
 }

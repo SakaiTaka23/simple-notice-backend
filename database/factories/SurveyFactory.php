@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Survey;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class SurveyFactory extends Factory
 {
@@ -26,7 +27,7 @@ class SurveyFactory extends Factory
             'owner'=>$this->faker->name,
             'title'=>$this->faker->sentence,
             'description'=>$this->faker->sentence,
-            'delete_pass'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'delete_pass'=>Hash::make('password'),
             'from' =>now(),
             'to'=>now(),
         ];

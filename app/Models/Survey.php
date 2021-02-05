@@ -9,6 +9,11 @@ class Survey extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'from' => 'date',
+        'to' => 'date'
+    ];
+
     protected $fillable=[
         'owner',
         'delete_pass',

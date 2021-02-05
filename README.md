@@ -108,6 +108,6 @@
 * [x] 必要な値をもとにapiの形を定義
 * [x] idから情報を取得
 * [ ] 回答可能アンケート表示→今のところ期限を設けることはしなくていいかも?
-* [ ] surveyテーブルにtitle,descriptionを付け加えてapiにも反映させること
-* [ ] survey apiにdelete keyを流さないようにすること
+* [x] surveyテーブルにtitle,descriptionを付け加えてapiにも反映させること
+* [x] survey apiにdelete keyを流さないようにすること
 

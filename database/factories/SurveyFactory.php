@@ -24,6 +24,8 @@ class SurveyFactory extends Factory
         return [
             'id'=>$this->faker->uuid,
             'owner'=>$this->faker->name,
+            'title'=>$this->faker->sentence,
+            'description'=>$this->faker->sentence,
             'delete_pass'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'from' =>now(),
             'to'=>now(),

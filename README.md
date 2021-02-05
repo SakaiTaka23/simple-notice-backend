@@ -65,10 +65,13 @@
 | column      | type   | description                          |
 | ----------- | ------ | ------------------------------------ |
 | id          | id     |                                      |
+| title       | string | アンケート全体のタイトル             |
+| description | string | タイトルの詳細                       |
 | owner       | string | 出題者                               |
 | from        | date   | 解答期間いつから                     |
 | to          | date   | いつまで                             |
 | delete_pass | string | アンケートを削除するためのパスワード |
+
 
 **questions**
 
@@ -105,4 +108,6 @@
 * [x] 必要な値をもとにapiの形を定義
 * [x] idから情報を取得
 * [ ] 回答可能アンケート表示→今のところ期限を設けることはしなくていいかも?
+* [ ] surveyテーブルにtitle,descriptionを付け加えてapiにも反映させること
+* [ ] survey apiにdelete keyを流さないようにすること
 

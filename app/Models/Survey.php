@@ -14,11 +14,15 @@ class Survey extends Model
         'to' => 'date'
     ];
 
-    protected $fillable=[
+    protected $fillable = [
         'owner',
         'delete_pass',
         'from',
         'to'
+    ];
+
+    protected $hidden = [
+        'delete_pass',
     ];
 
     protected $primaryKey = 'id';

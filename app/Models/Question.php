@@ -18,10 +18,13 @@ class Question extends Model
         'survey_id',
         'question_number',
         'type',
-        'name',
         'title',
         'is_required',
         'choices',
+    ];
+
+    protected $hidden = [
+        'id'
     ];
 
     public $timestamps = false;

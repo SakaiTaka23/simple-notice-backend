@@ -29,7 +29,7 @@ class QuestionFactory extends Factory
             'type'=>$this->faker->randomElement(['text','checkbox','radio']),
             'title'=>$this->faker->sentence,
             'is_required'=>$this->faker->boolean,
-            'choices'=>$this->faker->randomElements($choices,3),
+            'choices'=>$this->faker->randomElements($choices, 3),
         ];
     }
 }

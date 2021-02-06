@@ -36,21 +36,18 @@ class SurveyController extends Controller
         return $survey;
     }
 
+    /**
+     * リクエストを受け取りそのidをもとに結果をDBへ保存
+     * @return obj json
+     */
     public function storeResult(Request $request)
     {
-        $results = [
-            'id' => '04bcd32d-c41b-35db-aeac-265408b83c7f',
-            1 => 'a',
-            2 => ['b','d'],
-            3 => 'b',
-            4 => 'd',
-            5 => 'e',
-        ];
+        $results = $request->all();
 
         $id = $results['id'];
         unset($results['id']);
         
         $this->repository->storeSurveyResult($id,$results);
-        return $request;
+        return 'ok';
     }
 }

@@ -17,6 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/survey', [SurveyController::class,'getSurveys']);
 
-Route::get('/survey/dev', [SurveyController::class,'storeResult']);
 Route::get('/survey/{uuid}', [SurveyController::class,'searchFromId']);
-//開発終了後メソッド、ルートを直しておく
+Route::post('/survey/{uuid}', [SurveyController::class,'storeResult']);

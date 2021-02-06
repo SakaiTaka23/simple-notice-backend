@@ -19,9 +19,9 @@ interface SurveyRepositoryInterface
     public function getSurveyQuestions(string $uuid);
 
     /**
-     * 結果保存用のjsonオブジェクトを受け取りDBに保存
+     * 結果保存用のエンコード後のjsonオブジェクトを受け取りDBに保存
      * 
-     * @param $results jsonオブジェクト
+     * @param array $results result arrays
      */
-    public function storeSurveyResult(object $results);
+    public function storeSurveyResult(string $id,array $results):void;
 }

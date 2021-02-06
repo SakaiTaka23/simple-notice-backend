@@ -38,7 +38,7 @@ class SurveyController extends Controller
 
     public function storeResult(Request $request)
     {
-        $result = [
+        $results = [
             'id' => '04bcd32d-c41b-35db-aeac-265408b83c7f',
             1 => 'a',
             2 => ['b','d'],
@@ -46,9 +46,11 @@ class SurveyController extends Controller
             4 => 'd',
             5 => 'e',
         ];
-        dd($result);
+
+        $id = $results['id'];
+        unset($results['id']);
         
-        $this->repository->storeSurveyResult($result);
+        $this->repository->storeSurveyResult($id,$results);
         return $request;
     }
 }

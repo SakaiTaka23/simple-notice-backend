@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
         $survey->each(function ($s) {
             $s->questions()->saveMany(Question::factory(5)->make());
         });
+        $questions = Question::all();
+        foreach ($questions as $question){
+            $question->question_number = $question->id % 5;
+            if($question->question_number == 0){
+                $question->question_number = 5;
+            }
+            $question->save();
+        }
     }
 }

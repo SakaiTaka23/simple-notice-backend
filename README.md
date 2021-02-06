@@ -83,7 +83,6 @@
 | survey_id       | unsignedBigInteger | relation     |
 | question_number | number             | 質問の順番   |
 | type            | string             | inputの種類  |
-| name            | string             | htmlのname   |
 | title           | string             | 質問の内容   |
 | is_required     | boolean            | 必須かどうか |
 | choices         | json nullable      | 選択肢       |
@@ -111,5 +110,6 @@
 * [x] surveyテーブルにtitle,descriptionを付け加えてapiにも反映させること
 * [x] survey apiにdelete keyを流さないようにすること
 * [ ] survey / id の時もdelete keyを流さないようにすること
-* [ ] choicesを文字列ではなく配列に直す
+* [x] choicesを文字列ではなく配列に直す
+* [x] nameに . がつかないようにすること
 

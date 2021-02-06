@@ -27,10 +27,9 @@ class QuestionFactory extends Factory
             'survey_id'=>$this->faker->uuid,
             'question_number'=>$this->faker->randomDigit(),
             'type'=>$this->faker->randomElement(['text','checkbox','radio']),
-            'name'=>$this->faker->name,
             'title'=>$this->faker->sentence,
             'is_required'=>$this->faker->boolean,
-            'choices'=>Arr::random($choices,3),
+            'choices'=>$this->faker->randomElements($choices,3),
         ];
     }
 }

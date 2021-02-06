@@ -18,7 +18,6 @@ class CreateQuestionsTable extends Migration
             $table->uuid('survey_id');
             $table->integer('question_number');
             $table->string('type');
-            $table->string('name');
             $table->string('title');
             $table->boolean('is_required');
             $table->json('choices')->nullable();

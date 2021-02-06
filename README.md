@@ -96,9 +96,8 @@
 | --------------- | ------------------ | ----------- |
 | id              | id                 |             |
 | survey_id       | unsignedBigInteger | relation    |
-| question_number | number             |             |
+| question_number | integer            |             |
 | answer          | string             |             |
-| count           | number             |             |
 
 * テキストデータには新たにデータを作成、チェックボックス、ラジオに関してはカウントを使用
 

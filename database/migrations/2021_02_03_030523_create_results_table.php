@@ -15,7 +15,9 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('survey_id');
+            $table->string('survey_id');
+            $table->integer('question_number');
+            $table->string('answer');
         });
     }
 

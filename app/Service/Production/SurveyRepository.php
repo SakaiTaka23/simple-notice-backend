@@ -22,4 +22,9 @@ class SurveyRepository implements SurveyRepositoryInterface
     {
         return $this->survey->where('id', $uuid)->with('questions')->get();
     }
+
+    public function storeSurveyResult(object $results)
+    {
+        dd($results);
+    }
 }

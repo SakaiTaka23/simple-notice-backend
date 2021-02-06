@@ -35,10 +35,11 @@
 * idはhashedidを使いたいな! **laravel-hashidsを確認**
 * apiなので前に http://localhost/api/ がつく
 
-| route       | method | description              |
-| ----------- | ------ | ------------------------ |
-| /survey/:id | get    | idからアンケート情報取得 |
-| /survey     | get    | アンケート一覧取得       |
+| route       | method | description                    |
+| ----------- | ------ | ------------------------------ |
+| /survey     | get    | アンケート一覧取得             |
+| /survey/:id | get    | idからアンケート情報取得       |
+| /survey/:id | post   | データを受け取り結果をDBに保存 |
 
 
 
@@ -90,26 +91,27 @@
 **result**
 
 * 回答のデータ格納
-* 未完成
 
-| column    | type               | description |
-| --------- | ------------------ | ----------- |
-| id        | id                 |             |
-| survey_id | unsignedBigInteger | relation    |
+| column          | type               | description |
+| --------------- | ------------------ | ----------- |
+| id              | id                 |             |
+| survey_id       | unsignedBigInteger | relation    |
+| question_number | number             |             |
+| answer          | string             |             |
+| count           | number             |             |
 
-
-
+* テキストデータには新たにデータを作成、チェックボックス、ラジオに関してはカウントを使用
 
 
 
 ## Todo
 
-* [x] 必要な値をもとにapiの形を定義
-* [x] idから情報を取得
+* todoはリポジトリのprojectsに記入
+
+
+
+
+## Features
+
 * [ ] 回答可能アンケート表示→今のところ期限を設けることはしなくていいかも?
-* [x] surveyテーブルにtitle,descriptionを付け加えてapiにも反映させること
-* [x] survey apiにdelete keyを流さないようにすること
-* [ ] survey / id の時もdelete keyを流さないようにすること
-* [x] choicesを文字列ではなく配列に直す
-* [x] nameに . がつかないようにすること
 

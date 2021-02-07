@@ -43,11 +43,9 @@ class SurveyController extends Controller
     public function storeResult(Request $request)
     {
         $results = $request->all();
-
-        $id = $results['id'];
-        unset($results['id']);
+        $id = $request->uuid;
         
-        $this->repository->storeSurveyResult($id,$results);
-        return 'ok';
+        $this->repository->storeSurveyResult($id, $results);
+        return 'data stored!';
     }
 }

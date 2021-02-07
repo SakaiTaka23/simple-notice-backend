@@ -20,8 +20,8 @@ interface SurveyRepositoryInterface
 
     /**
      * 結果保存用のエンコード後のjsonオブジェクトを受け取りDBに保存
-     * 
+     *
      * @param array $results result arrays
      */
-    public function storeSurveyResult(string $id,array $results):void;
+    public function storeSurveyResult(string $id, array $results):void;
 }

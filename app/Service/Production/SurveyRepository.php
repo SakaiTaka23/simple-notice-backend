@@ -23,14 +23,14 @@ class SurveyRepository implements SurveyRepositoryInterface
         return $this->survey->where('id', $uuid)->with('questions')->get();
     }
 
-    public function storeSurveyResult(string $id,array $results):void
+    public function storeSurveyResult(string $id, array $results):void
     {
-        foreach ($results as $key => $result){
-            if(gettype($result) == 'array'){
-                foreach($result as $item){
+        foreach ($results as $key => $result) {
+            if (gettype($result) == 'array') {
+                foreach ($result as $item) {
                     DB::table('results')->insert(['survey_id'=>$id,'question_number'=>$key,'answer'=>$item]);
                 }
-            }else{
+            } else {
                 DB::table('results')->insert(['survey_id'=>$id,'question_number'=>$key,'answer'=>$result]);
             }
         }

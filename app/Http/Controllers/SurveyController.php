@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\ResultRepositoryInterface;
 use Illuminate\Http\Request;
 
 use App\Service\SurveyRepositoryInterface;
 
 class SurveyController extends Controller
 {
-    public function __construct(SurveyRepositoryInterface $SurveyRepository,ResultRepositoryInterface $ResultRepository)
+    public function __construct(SurveyRepositoryInterface $repository)
     {
-        $this->SurveyRepository = $SurveyRepository;
-        $this->ResultRepository = $ResultRepository;
+        $this->repository = $repository;
     }
 
     /**
@@ -22,7 +20,7 @@ class SurveyController extends Controller
      */
     public function getSurveys()
     {
-        $surveys = json_encode($this->SurveyRepository->getSurveyOverviews());
+        $surveys = json_encode($this->repository->getSurveyOverviews());
         return $surveys;
     }
 
@@ -34,33 +32,7 @@ class SurveyController extends Controller
     public function searchFromId(Request $request)
     {
         $uuid = $request->uuid;
-        $survey = json_encode($this->SurveyRepository->getSurveyQuestions($uuid));
+        $survey = json_encode($this->repository->getSurveyQuestions($uuid));
         return $survey;
-    }
-
-    /**
-     * リクエストを受け取りそのidをもとに結果をDBへ保存
-     * @return obj json
-     */
-    public function storeResult(Request $request)
-    {
-        $results = $request->all();
-        $id = $request->uuid;
-        
-        $this->ResultRepository->storeSurveyResult($id, $results);
-        return 'data stored!';
-    }
-
-    /**
-     * uuidを受け取り現時点での結果を表すjsonを返す
-     * @param $uuid アンケートのuuid
-     * @return obj json
-     */
-    public function showResult($uuid)
-    {
-        // とりあえずモックid
-        $uuid = 'bdf9f8f8-b73d-3d55-8965-c878ddb92746';
-        $result = $this->ResultRepository->getSurveyResults($uuid);
-        return $result;
     }
 }

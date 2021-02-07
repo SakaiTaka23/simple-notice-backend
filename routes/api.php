@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/survey', [SurveyController::class,'getSurveys']);
 
-Route::get('/survey/{uuid}/result', [SurveyController::class,'showResult']);
+Route::get('/survey/{uuid}/result', [ResultController::class,'showResult']);
 Route::get('/survey/{uuid}', [SurveyController::class,'searchFromId']);
-Route::post('/survey/{uuid}', [SurveyController::class,'storeResult']);
+Route::post('/survey/{uuid}', [ResultController::class,'storeResult']);

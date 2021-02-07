@@ -18,7 +18,7 @@ class CreateResultsTable extends Migration
             $table->string('survey_id');
             $table->integer('question_number')->default(0);
             $table->string('answer')->nullable();
-            $table->integer('count')->default(0);
+            $table->integer('count')->default(1);
         });
     }
 

@@ -13,14 +13,22 @@ class ResultRepository implements ResultRepositoryInterface
         foreach ($results as $key => $result) {
             if (gettype($result) == 'array') {
                 foreach ($result as $item) {
-                    // DB::table('results')->insert(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$item]);
-                    // var_dump('array',$key,$item);
-                    Result::where(['survey_id'=>$uuid])->firstOrCreate(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$item])->update(['count'=>DB::raw('count+1')]);
+                    $data = Result::where(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$item])->first();
+                    if ($data == []) {
+                        Result::insert(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$item]);
+                    } else {
+                        $data->count += 1;
+                        $data->save();
+                    }
                 }
             } else {
-                // DB::table('results')->insert(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$result]);
-                $data = Result::firstOrNew(['survey_id'=>$uuid], ['question_number'=>$key], ['answer'=>$result]);
-                dd($data, $key, $result);
+                $data = Result::where(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$result])->first();
+                if ($data == []) {
+                    Result::insert(['survey_id'=>$uuid,'question_number'=>$key,'answer'=>$result]);
+                } else {
+                    $data->count += 1;
+                    $data->save();
+                }
             }
         }
     }

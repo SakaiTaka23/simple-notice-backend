@@ -18,6 +18,7 @@ class CreateResultsTable extends Migration
             $table->string('survey_id');
             $table->integer('question_number');
             $table->string('answer');
+            $table->integer('count');
         });
     }
 

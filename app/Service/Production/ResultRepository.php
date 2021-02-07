@@ -22,6 +22,8 @@ class ResultRepository implements ResultRepositoryInterface
 
     public function getSurveyResults(string $uuid)
     {
+        $results = DB::table('results')->select(['question_number','answer'])->where('survey_id',$uuid)->get();
+        dd($results);
         return 'results';
     }
 }

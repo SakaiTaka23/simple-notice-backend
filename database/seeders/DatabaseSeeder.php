@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Question;
+use App\Models\Result;
 use App\Models\Survey;
 use Illuminate\Database\Seeder;
 
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $survey->each(function ($s) {
             $s->questions()->saveMany(Question::factory(5)->make());
         });
+
         $questions = Question::all();
         foreach ($questions as $question) {
             $question->question_number = $question->id % 5;
@@ -27,5 +29,13 @@ class DatabaseSeeder extends Seeder
             }
             $question->save();
         }
+
+        $questions->each(function($q){
+            $q->results()->saveMany(Result::factory(2)
+            ->state([
+                'survey_id' => $q->survey_id,
+            ])
+            ->make());
+        });
     }
 }

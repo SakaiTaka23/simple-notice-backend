@@ -33,4 +33,9 @@ class Question extends Model
     {
         return $this->belongsTo(Survey::class);
     }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class,'survey_id','survey_id');
+    }
 }

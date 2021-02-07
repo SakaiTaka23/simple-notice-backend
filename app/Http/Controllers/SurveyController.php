@@ -48,4 +48,15 @@ class SurveyController extends Controller
         $this->repository->storeSurveyResult($id, $results);
         return 'data stored!';
     }
+
+    /**
+     * uuidを受け取り現時点での結果を表すjsonを返す
+     * @param $uuid アンケートのuuid
+     * @return obj json
+     */
+    public function showResult($uuid)
+    {
+        $result = $this->repository->getSurveyResults($uuid);
+        return $result;
+    }
 }

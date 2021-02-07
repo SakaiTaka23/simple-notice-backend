@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Service\Production\ResultRepository;
 use App\Service\Production\SurveyRepository;
-use App\Service\SurveyRepositoryInterface as ServiceSurveyRepositoryInterface;
+use App\Service\ResultRepositoryInterface;
+use App\Service\SurveyRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ServiceSurveyRepositoryInterface::class, SurveyRepository::class);
+        $this->app->singleton(SurveyRepositoryInterface::class, SurveyRepository::class);
+        $this->app->singleton(ResultRepositoryInterface::class,ResultRepository::class);
     }
 
     /**

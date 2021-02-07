@@ -22,6 +22,6 @@ class Result extends Model
 
     public function question()
     {
-        return $this->belongsTo(Question::class,'survey_id','survey_id');
+        return $this->belongsTo(Question::class, 'survey_id', 'survey_id');
     }
 }

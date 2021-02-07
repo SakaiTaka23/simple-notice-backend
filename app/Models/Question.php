@@ -36,6 +36,6 @@ class Question extends Model
 
     public function results()
     {
-        return $this->hasMany(Result::class,'survey_id','survey_id');
+        return $this->hasMany(Result::class, 'survey_id', 'survey_id');
     }
 }

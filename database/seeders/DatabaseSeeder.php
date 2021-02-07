@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             $question->save();
         }
 
-        $questions->each(function($q){
+        $questions->each(function ($q) {
             $q->results()->saveMany(Result::factory(2)
             ->state([
                 'survey_id' => $q->survey_id,

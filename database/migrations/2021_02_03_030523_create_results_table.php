@@ -16,9 +16,9 @@ class CreateResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->string('survey_id');
-            $table->integer('question_number');
-            $table->string('answer');
-            $table->integer('count');
+            $table->integer('question_number')->default(0);
+            $table->string('answer')->nullable();
+            $table->integer('count')->default(0);
         });
     }
 

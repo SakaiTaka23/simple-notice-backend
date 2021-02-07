@@ -12,7 +12,7 @@ class ResultController extends Controller
         $this->repository = $repository;
     }
 
-        /**
+    /**
      * リクエストを受け取りそのidをもとに結果をDBへ保存
      * @return obj json
      */
@@ -20,7 +20,6 @@ class ResultController extends Controller
     {
         $results = $request->all();
         $id = $request->uuid;
-        
         $this->repository->storeSurveyResult($id, $results);
         return 'data stored!';
     }
@@ -33,7 +32,7 @@ class ResultController extends Controller
     public function showResult($uuid)
     {
         // とりあえずモックid
-        $uuid = 'bdf9f8f8-b73d-3d55-8965-c878ddb92746';
+        $uuid = 'f1eeb9b9-585d-3eb4-a8f7-8d81442ce861';
         $result = $this->repository->getSurveyResults($uuid);
         return $result;
     }

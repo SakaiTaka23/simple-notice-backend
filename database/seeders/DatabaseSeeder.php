@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             $q->results()->saveMany(Result::factory(2)
             ->state([
                 'survey_id' => $q->survey_id,
+                'question_number' => $q->question_number,
             ])
             ->make());
         });

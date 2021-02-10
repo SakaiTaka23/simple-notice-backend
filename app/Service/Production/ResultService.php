@@ -14,8 +14,7 @@ class ResultService implements ResultServiceInterface
         QuestionRepositoryInterface $questionRepository,
         ResultRepositoryInterface $resultRepository,
         SurveyRepositoryInterface $surveyRepository
-    )
-    {
+    ) {
         $this->questionRepository = $questionRepository;
         $this->resultRepository = $resultRepository;
         $this->surveyRepository = $surveyRepository;
@@ -27,10 +26,29 @@ class ResultService implements ResultServiceInterface
 
         $question = $this->questionRepository->getQuestionOverview($id, 1);
         $answersAndCount = $this->resultRepository->getAnswersAndCount($id, 1);
-        $c = Arr::pluck($answersAndCount, 'count');
-        $a = Arr::pluck($answersAndCount, 'answer');
-        // $result = [$s,[$q,$a,$c]];
-        // $d = Arr::pluck($c, 'count');
-        dd($a, $c);
+        $answers = Arr::pluck($answersAndCount, 'answer');
+        $counts = Arr::pluck($answersAndCount, 'count');
+        $results = [
+            'title'=>$surveyOverview->title,
+            'description'=>$surveyOverview->description,
+            'owner'=>$surveyOverview->owner,
+            'questions'=>
+                [
+                    [
+                    'title'=>$question->title,
+                    'type'=>$question->type,
+                    'label'=>$answers,
+                    'data'=>$counts
+                    ],
+                    [
+                    'title'=>$question->title,
+                    'type'=>$question->type,
+                    'label'=>$answers,
+                    'data'=>$counts
+                    ]
+                ]
+            ];
+        // dd($results);
+        return $results;
     }
 }

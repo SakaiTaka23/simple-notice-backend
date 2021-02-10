@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
-interface ResultServiceInterface{
+interface ResultServiceInterface
+{
     public function getSurveyResults();
 }

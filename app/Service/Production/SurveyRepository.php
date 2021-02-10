@@ -22,4 +22,13 @@ class SurveyRepository implements SurveyRepositoryInterface
     {
         return $this->survey->where('id', $uuid)->with('questions')->get();
     }
+
+    public function getSurveyOverview(string $uuid)
+    {
+        $result = DB::table('survey')
+        ->select('title', 'description', 'owner')
+        ->where('id', $uuid)
+        ->get();
+        return $result;
+    }
 }

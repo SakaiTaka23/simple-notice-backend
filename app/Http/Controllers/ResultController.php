@@ -34,11 +34,11 @@ class ResultController extends Controller
      */
     public function showResult($uuid)
     {
-        $validator = Validator::make(['uuid'=>$uuid],[       
+        $validator = Validator::make(['uuid'=>$uuid], [
             'uuid' => 'exists:surveys,id'
         ]);
         
-        if($validator->fails()){
+        if ($validator->fails()) {
             return [];
         }
 

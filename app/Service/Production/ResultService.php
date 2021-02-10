@@ -25,32 +25,29 @@ class ResultService implements ResultServiceInterface
         $surveyOverview = $this->surveyRepository->getSurveyOverview($id);
 
         $question_count = $this->questionRepository->getQuestionCount($id);
+        $questions = [];
 
-        $question = $this->questionRepository->getQuestionOverview($id, 1);
-        $answersAndCount = $this->resultRepository->getAnswersAndCount($id, 1);
-        $answers = Arr::pluck($answersAndCount, 'answer');
-        $counts = Arr::pluck($answersAndCount, 'count');
+        for ($i=1;$i<=$question_count;$i++) {
+            $newQuestion = [];
+            $question = $this->questionRepository->getQuestionOverview($id, $i);
+            $answersAndCount = $this->resultRepository->getAnswersAndCount($id, $i);
+            $answers = Arr::pluck($answersAndCount, 'answer');
+            $counts = Arr::pluck($answersAndCount, 'count');
+            $newQuestion = [
+                'title'=>$question->title,
+                'type'=>$question->type,
+                'label'=>$answers,
+                'data'=>$counts
+            ];
+            array_push($questions, $newQuestion);
+        }
+
         $results = [
             'title'=>$surveyOverview->title,
             'description'=>$surveyOverview->description,
             'owner'=>$surveyOverview->owner,
-            'questions'=>
-                [
-                    [
-                    'title'=>$question->title,
-                    'type'=>$question->type,
-                    'label'=>$answers,
-                    'data'=>$counts
-                    ],
-                    [
-                    'title'=>$question->title,
-                    'type'=>$question->type,
-                    'label'=>$answers,
-                    'data'=>$counts
-                    ]
-                ]
+            'questions'=>$questions,
             ];
-        // dd($results);
         return $results;
     }
 }

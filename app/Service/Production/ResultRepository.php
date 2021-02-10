@@ -35,7 +35,18 @@ class ResultRepository implements ResultRepositoryInterface
 
     public function getSurveyResults(string $uuid)
     {
-        $results = DB::table('results')->select(['question_number','answer'])->where('survey_id', $uuid)->get();
+        $results = DB::table('results')
+        ->select('results.question_number','questions.title','questions.type','results.answer','results.count')
+        ->join('questions',function($join){
+            $join->on('questions.survey_id','=','results.survey_id')
+            ->on('questions.question_number','=','results.question_number')
+            ->where('results.survey_id','=','145e2c82-1814-3b52-99bd-7ea79e2d72f5');
+        })
+        ->orderBy('results.question_number')
+        ->orderBy('results.count')
+        ->orderBy('results.answer')
+        ->get();
+
         dd($results);
         return 'results';
     }

@@ -20,10 +20,18 @@ interface ResultRepositoryInterface
     public function getSurveyResults(string $uuid);
 
     /**
-     * 問題のid,question_numberからその答え、数を取得
+     * 問題のid,question_numberからその答えのみ取得
      *
      * @param string $uuid そのアンケートのid
      * @param int $question_number 問題番号
      */
-    public function getAnswerAndCount(string $uuid, int $question_number);
+    public function getAnswers(string $uuid, int $question_number);
+
+    /**
+     * 問題のid,question_numberから回答数取得
+     * 
+     * @param string $uuid そのアンケートのid
+     * @param int $question_number 問題番号
+     */
+    public function getCounts(string $uuid,int $question_number);
 }

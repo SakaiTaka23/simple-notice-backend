@@ -28,7 +28,7 @@ class SurveyRepository implements SurveyRepositoryInterface
         $result = DB::table('surveys')
         ->select('title', 'description', 'owner')
         ->where('id', $uuid)
-        ->get();
+        ->first();
         return $result;
     }
 }

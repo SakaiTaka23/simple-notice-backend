@@ -21,9 +21,11 @@ class ResultService implements ResultServiceInterface
 
     public function getSurveyResults($id)
     {
-        $q = $this->questionRepository->getQuestionOverview($id, 1);
-        $r = $this->resultRepository->getAnswerAndCount($id, 1);
         $s = $this->surveyRepository->getSurveyOverview($id);
-        dd($q, $r, $s);
+        $q = $this->questionRepository->getQuestionOverview($id, 1);
+        $a = $this->resultRepository->getAnswers($id, 1);
+        $c = $this->resultRepository->getCounts($id, 1);
+        $result = [$s,[$q,$a,$c]];
+        dd($result);
     }
 }

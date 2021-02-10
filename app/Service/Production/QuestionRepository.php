@@ -13,7 +13,7 @@ class QuestionRepository implements QuestionRepositoryInterface
         ->select('title', 'type')
         ->where('survey_id', '=', $uuid)
         ->where('question_number', '=', $question_number)
-        ->get();
+        ->first();
 
         return $result;
     }

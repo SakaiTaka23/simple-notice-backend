@@ -51,10 +51,20 @@ class ResultRepository implements ResultRepositoryInterface
         return 'results';
     }
 
-    public function getAnswerAndCount(string $uuid, int $question_number)
+    public function getAnswers(string $uuid, int $question_number)
     {
         $results = DB::table('results')
-        ->select('answer', 'count')
+        ->select('answer')
+        ->where('survey_id', '=', $uuid)
+        ->where('question_number', '=', $question_number)
+        ->get();
+        return $results;
+    }
+
+    public function getCounts(string $uuid, int $question_number)
+    {
+        $results = DB::table('results')
+        ->select('count')
         ->where('survey_id', '=', $uuid)
         ->where('question_number', '=', $question_number)
         ->get();

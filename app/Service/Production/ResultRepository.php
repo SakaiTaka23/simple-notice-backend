@@ -50,4 +50,14 @@ class ResultRepository implements ResultRepositoryInterface
         dd($results);
         return 'results';
     }
+
+    public function getAnswerAndCount(string $uuid, int $question_number)
+    {
+        $results = DB::table('results')
+        ->select('answer','count')
+        ->where('survey_id','=',$uuid)
+        ->where('question_number','=',$question_number)
+        ->get();
+        return $results;
+    }
 }

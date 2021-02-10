@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Service\Production\QuestionRepository;
 use App\Service\Production\ResultRepository;
 use App\Service\Production\ResultService;
 use App\Service\Production\SurveyRepository;
+use App\Service\QuestionRepositoryInterface;
 use App\Service\ResultRepositoryInterface;
 use App\Service\ResultServiceInterface;
 use App\Service\SurveyRepositoryInterface;
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(SurveyRepositoryInterface::class, SurveyRepository::class);
         $this->app->singleton(ResultRepositoryInterface::class, ResultRepository::class);
+        $this->app->singleton(QuestionRepositoryInterface::class, QuestionRepository::class);
 
         $this->app->singleton(ResultServiceInterface::class, ResultService::class);
     }

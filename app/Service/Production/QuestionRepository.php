@@ -17,4 +17,13 @@ class QuestionRepository implements QuestionRepositoryInterface
 
         return $result;
     }
+
+    public function getQuestionCount(string $uuid)
+    {
+        $count = DB::table('questions')
+        ->where('survey_id', $uuid)
+        ->max('question_number');
+        
+        return $count;
+    }
 }

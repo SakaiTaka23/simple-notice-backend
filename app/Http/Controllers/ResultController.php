@@ -34,7 +34,6 @@ class ResultController extends Controller
     public function showResult($uuid)
     {
         // とりあえずモックid
-        $uuid = '145e2c82-1814-3b52-99bd-7ea79e2d72f5';
         $results = json_encode($this->result->getSurveyResults($uuid));
         return $results;
     }

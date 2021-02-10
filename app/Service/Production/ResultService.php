@@ -24,6 +24,12 @@ class ResultService implements ResultServiceInterface
     {
         $surveyOverview = $this->surveyRepository->getSurveyOverview($id);
 
+        if ($surveyOverview == []) {
+            return [];
+        }
+
+        $question_count = $this->questionRepository->getQuestionCount($id);
+
         $question = $this->questionRepository->getQuestionOverview($id, 1);
         $answersAndCount = $this->resultRepository->getAnswersAndCount($id, 1);
         $answers = Arr::pluck($answersAndCount, 'answer');

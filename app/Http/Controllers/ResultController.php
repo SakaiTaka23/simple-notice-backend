@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
-    public function __construct(ResultRepositoryInterface $repository
-    ,ResultServiceInterface $result)
+    public function __construct(ResultRepositoryInterface $repository, ResultServiceInterface $result)
     {
         $this->repository = $repository;
         $this->result = $result;

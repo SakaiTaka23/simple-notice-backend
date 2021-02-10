@@ -6,13 +6,15 @@ use App\Service\QuestionRepositoryInterface;
 use App\Service\ResultRepositoryInterface;
 use App\Service\ResultServiceInterface;
 use App\Service\SurveyRepositoryInterface;
+use Illuminate\Support\Arr;
 
 class ResultService implements ResultServiceInterface
 {
     public function __construct(
         QuestionRepositoryInterface $questionRepository,
         ResultRepositoryInterface $resultRepository,
-        SurveyRepositoryInterface $surveyRepository)
+        SurveyRepositoryInterface $surveyRepository
+    )
     {
         $this->questionRepository = $questionRepository;
         $this->resultRepository = $resultRepository;
@@ -21,11 +23,14 @@ class ResultService implements ResultServiceInterface
 
     public function getSurveyResults($id)
     {
-        $s = $this->surveyRepository->getSurveyOverview($id);
-        $q = $this->questionRepository->getQuestionOverview($id, 1);
-        $a = $this->resultRepository->getAnswers($id, 1);
-        $c = $this->resultRepository->getCounts($id, 1);
-        $result = [$s,[$q,$a,$c]];
-        dd($result);
+        $surveyOverview = $this->surveyRepository->getSurveyOverview($id);
+
+        $question = $this->questionRepository->getQuestionOverview($id, 1);
+        $answersAndCount = $this->resultRepository->getAnswersAndCount($id, 1);
+        $c = Arr::pluck($answersAndCount, 'count');
+        $a = Arr::pluck($answersAndCount, 'answer');
+        // $result = [$s,[$q,$a,$c]];
+        // $d = Arr::pluck($c, 'count');
+        dd($a, $c);
     }
 }

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Service\ResultRepositoryInterface;
+use App\Service\ResultServiceInterface;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
-    public function __construct(ResultRepositoryInterface $repository)
+    public function __construct(ResultRepositoryInterface $repository
+    ,ResultServiceInterface $result)
     {
         $this->repository = $repository;
+        $this->result = $result;
     }
 
     /**
@@ -32,8 +35,7 @@ class ResultController extends Controller
     public function showResult($uuid)
     {
         // とりあえずモックid
-        $uuid = 'f1eeb9b9-585d-3eb4-a8f7-8d81442ce861';
-        $result = $this->repository->getSurveyResults($uuid);
-        return $result;
+        $uuid = '145e2c82-1814-3b52-99bd-7ea79e2d72f5';
+        $this->result->getSurveyResults($uuid);
     }
 }

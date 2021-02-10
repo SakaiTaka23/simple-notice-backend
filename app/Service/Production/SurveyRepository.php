@@ -25,7 +25,7 @@ class SurveyRepository implements SurveyRepositoryInterface
 
     public function getSurveyOverview(string $uuid)
     {
-        $result = DB::table('survey')
+        $result = DB::table('surveys')
         ->select('title', 'description', 'owner')
         ->where('id', $uuid)
         ->get();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchFromIdRequest;
 use App\Service\QuestionRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,7 @@ class SurveyController extends Controller
      * 返り値の情報はまだ未定
      * @return obj json
      */
-    public function searchFromId(Request $request)
+    public function searchFromId(SearchFromIdRequest $request)
     {
         $uuid = $request->uuid;
         $survey = json_encode($this->repository->getSurveyQuestions($uuid));

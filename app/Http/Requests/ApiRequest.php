@@ -8,6 +8,17 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 abstract class ApiRequest extends FormRequest
 {
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
     /**
      * バリデーションが失敗した時の対処
      * http 400、メッセージを返す

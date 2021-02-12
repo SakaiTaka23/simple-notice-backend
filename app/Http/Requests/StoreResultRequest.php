@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class ShowResultRequest extends ApiRequest
+class StoreResultRequest extends ApiRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -22,7 +22,7 @@ class ShowResultRequest extends ApiRequest
     protected function prepareForValidation()
     {
         $this->merge([
-        'uuid' => $this->route('uuid'),
-    ]);
+            'uuid' => $this->route('uuid'),
+            ]);
     }
 }

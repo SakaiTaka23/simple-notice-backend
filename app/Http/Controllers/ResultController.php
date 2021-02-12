@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ShowResultRequest;
+use App\Http\Requests\StoreResultRequest;
 use App\Service\ResultRepositoryInterface;
 use App\Service\ResultServiceInterface;
-use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
@@ -19,8 +19,9 @@ class ResultController extends Controller
      * リクエストを受け取りそのidをもとに結果をDBへ保存
      * @return obj json
      */
-    public function storeResult(Request $request)
+    public function storeResult(StoreResultRequest $request)
     {
+        dd('store');
         $results = $request->all();
         $id = $request->uuid;
         $this->repository->storeSurveyResult($id, $results);

@@ -2,11 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
-
-class ShowResultRequest extends FormRequest
+class ShowResultRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,19 +26,13 @@ class ShowResultRequest extends FormRequest
         ];
     }
 
+    /**
+     * ルートの値を取得
+     */
     protected function prepareForValidation()
     {
         $this->merge([
         'uuid' => $this->route('uuid'),
     ]);
-    }
-
-    protected function failedValidation(Validator $validator)
-    {
-        $res = response()->json([
-            'status' => 400,
-            'errors' => $validator->errors(),
-        ], 400);
-        throw new HttpResponseException($res);
     }
 }

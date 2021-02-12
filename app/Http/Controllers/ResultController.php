@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShowResultRequest;
 use App\Service\ResultRepositoryInterface;
 use App\Service\ResultServiceInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ResultController extends Controller
 {
@@ -32,16 +32,9 @@ class ResultController extends Controller
      * @param $uuid アンケートのuuid
      * @return obj json
      */
-    public function showResult($uuid)
+    public function showResult(ShowResultRequest $request)
     {
-        $validator = Validator::make(['uuid'=>$uuid], [
-            'uuid' => 'exists:surveys,id'
-        ]);
-        
-        if ($validator->fails()) {
-            return [];
-        }
-
+        $uuid = $request->uuid;
         $results = json_encode($this->result->getSurveyResults($uuid));
         return $results;
     }

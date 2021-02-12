@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\SearchFromIdRequest;
 use App\Service\QuestionRepositoryInterface;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class SurveyController extends Controller
      * @param Request $request リクエスト
      * @return string $id 作成したアンケートのid
      */
-    public function createSurvey(Request $request)
+    public function createSurvey(CreateSurveyRequest $request)
     {
         $data = $request->all();
         

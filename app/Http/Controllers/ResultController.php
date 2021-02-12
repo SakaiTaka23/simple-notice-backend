@@ -21,10 +21,10 @@ class ResultController extends Controller
      */
     public function storeResult(StoreResultRequest $request)
     {
-        dd('store');
+        $uuid = $request->uuid;
+        unset($request['uuid']);
         $results = $request->all();
-        $id = $request->uuid;
-        $this->repository->storeSurveyResult($id, $results);
+        $this->repository->storeSurveyResult($uuid, $results);
         return 'data stored!';
     }
 

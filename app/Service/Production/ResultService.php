@@ -20,7 +20,7 @@ class ResultService implements ResultServiceInterface
         $this->surveyRepository = $surveyRepository;
     }
 
-    public function getSurveyResults($id)
+    public function getSurveyResults($id):array
     {
         $surveyOverview = $this->surveyRepository->getSurveyOverview($id);
 

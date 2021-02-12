@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionRepository implements QuestionRepositoryInterface
 {
-    public function getQuestionOverview(string $uuid, int $question_number)
+    public function getQuestionOverview(string $uuid, int $question_number):object
     {
         return DB::table('questions')
         ->select('title', 'type')

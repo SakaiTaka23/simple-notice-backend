@@ -24,12 +24,12 @@ interface SurveyRepositoryInterface
      *
      * @param $uuid そのアンケートのid
      */
-    public function getSurveyQuestions(string $uuid);
+    public function getSurveyQuestions(string $uuid):object;
 
     /**
      * idからそのアンケートのタイトル、詳細、オーナーを取得
      *
      * @param string $uuid そのアンケートのid
      */
-    public function getSurveyOverview(string $uuid);
+    public function getSurveyOverview(string $uuid):object;
 }

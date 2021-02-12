@@ -11,7 +11,7 @@ interface QuestionRepositoryInterface
      * @param string $uuid そのアンケートのid
      * @param int $question_number 問題番号
      */
-    public function getQuestionOverview(string $uuid, int $question_number);
+    public function getQuestionOverview(string $uuid, int $question_number):object;
 
     /**
      * uuidを受け取りそのアンケートの問題数を取得

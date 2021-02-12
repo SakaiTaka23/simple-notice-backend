@@ -19,38 +19,11 @@ class SurveyController extends Controller
      * データを受け取りアンケートを新規作成
      *
      * @param Request $request リクエスト
+     * @return string $id 作成したアンケートのid
      */
     public function createSurvey(Request $request)
     {
-        //$data = $request->all();
-        $data = [
-            "title" => "title",
-            "description" => "description",
-            "owner" => "owner",
-            "delete_pass" => "pass",
-            "from" => "2021-2-12",
-            "to"=>"2021-2-19",
-            "questions" => [
-                0 => [
-                    "title" => "title1",
-                    "type" => "text",
-                    "is_required" => false,
-                    "choice" => [
-                        0 => "choice"
-                        ]
-                    ],
-                1 => [
-                    "title" => "title2",
-                    "type" => "check",
-                    "is_required" => true,
-                    "choice" => [
-                        0 => "choice",
-                        1 => "choice append",
-                        2 => "choice append",
-                        ]
-                    ]
-                ]
-            ];
+        $data = $request->all();
         
         $questions = $data['questions'];
         unset($data['questions']);
@@ -62,8 +35,7 @@ class SurveyController extends Controller
             $this->questionRepository->saveQuestion($id, $questionNum + 1, $question);
         }
 
-        dd($id, $survey, $questions);
-        return 'ok';
+        return $id;
     }
 
     /**

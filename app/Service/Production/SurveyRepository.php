@@ -4,6 +4,7 @@ namespace App\Service\Production;
 
 use App\Models\Survey;
 use App\Service\SurveyRepositoryInterface;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,7 +15,7 @@ class SurveyRepository implements SurveyRepositoryInterface
         $this->survey = $survey;
     }
 
-    public function saveSurvey(array $survey_data)
+    public function saveSurvey(array $survey_data):string
     {
         $id = uniqid();
         DB::table('surveys')->insert([
@@ -30,7 +31,7 @@ class SurveyRepository implements SurveyRepositoryInterface
         return $id;
     }
 
-    public function getSurveyOverviews()
+    public function getSurveyOverviews():Collection
     {
         return DB::table('surveys')->select(['id','title','description','owner','from','to'])->get();
     }
@@ -42,10 +43,9 @@ class SurveyRepository implements SurveyRepositoryInterface
 
     public function getSurveyOverview(string $uuid)
     {
-        $result = DB::table('surveys')
+        return DB::table('surveys')
         ->select('title', 'description', 'owner')
         ->where('id', $uuid)
         ->first();
-        return $result;
     }
 }

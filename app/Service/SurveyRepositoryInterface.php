@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use Illuminate\Support\Collection;
+
 interface SurveyRepositoryInterface
 {
 
@@ -10,12 +12,12 @@ interface SurveyRepositoryInterface
      *
      * @param array $survey_data アンケートに関する情報が入った配列
      */
-    public function saveSurvey(array $survey_data);
+    public function saveSurvey(array $survey_data):string;
 
     /**
      * 今あるアンケートの一覧を取得
      */
-    public function getSurveyOverviews();
+    public function getSurveyOverviews():Collection;
 
     /**
      * uuidを受け取りそのアンケートの情報、質問内容を返す

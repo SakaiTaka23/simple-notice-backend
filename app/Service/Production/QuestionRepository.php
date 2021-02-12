@@ -9,25 +9,21 @@ class QuestionRepository implements QuestionRepositoryInterface
 {
     public function getQuestionOverview(string $uuid, int $question_number)
     {
-        $result = DB::table('questions')
+        return DB::table('questions')
         ->select('title', 'type')
         ->where('survey_id', '=', $uuid)
         ->where('question_number', '=', $question_number)
         ->first();
-
-        return $result;
     }
 
-    public function getQuestionCount(string $uuid)
+    public function getQuestionCount(string $uuid):int
     {
-        $count = DB::table('questions')
+        return DB::table('questions')
         ->where('survey_id', $uuid)
         ->max('question_number');
-        
-        return $count;
     }
 
-    public function saveQuestion(string $uuid, int $key, array $question)
+    public function saveQuestion(string $uuid, int $key, array $question):void
     {
         $choices = null;
         if (($question['type'] == 'radio' || $question['type'] == 'check')) {

@@ -19,4 +19,13 @@ interface QuestionRepositoryInterface
      * @param string $uuid そのアンケートのid
      */
     public function getQuestionCount(string $uuid);
+
+    /**
+     * 質問、idを受け取り情報をもとにアンケートを作成
+     *
+     * @param string $uuid そのアンケートのid
+     * @param int $key 質問番号
+     * @param array $question 質問の情報
+     */
+    public function saveQuestion(string $uuid, int $key, array $question);
 }

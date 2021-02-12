@@ -35,12 +35,13 @@
 * idはhashedidを使いたいな! **laravel-hashidsを確認**
 * apiなので前に http://localhost/api/ がつく
 
-| route                | method | description                    |
-| -------------------- | ------ | ------------------------------ |
-| /survey              | get    | アンケート一覧取得             |
-| /survey/:uuid        | get    | idからアンケート情報取得       |
-| /survey/:uuid        | post   | データを受け取り結果をDBに保存 |
-| /survey/:uuid/result | get    | idから現時点での結果一覧を取得 |
+| route                | method | description                          |
+| -------------------- | ------ | ------------------------------------ |
+| /survey              | get    | アンケート一覧取得                   |
+| /survey/:uuid        | get    | idからアンケート情報取得             |
+| /survey/:uuid        | post   | データを受け取り結果をDBに保存       |
+| /survey/:uuid/result | get    | idから現時点での結果一覧を取得       |
+| /survey              | post   | データを受け取りアンケートを新規作成 |
 
 
 

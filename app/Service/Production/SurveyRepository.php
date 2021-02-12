@@ -5,12 +5,29 @@ namespace App\Service\Production;
 use App\Models\Survey;
 use App\Service\SurveyRepositoryInterface;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SurveyRepository implements SurveyRepositoryInterface
 {
     public function __construct(Survey $survey)
     {
         $this->survey = $survey;
+    }
+
+    public function saveSurvey(array $survey_data)
+    {
+        $id = uniqid();
+        DB::table('surveys')->insert([
+            'id' => $id,
+            'title' => $survey_data['title'],
+            'description' => $survey_data['description'],
+            'owner' => $survey_data['owner'],
+            'delete_pass' => Hash::make($survey_data['delete_pass']),
+            'from' => $survey_data['from'],
+            'to' => $survey_data['to'],
+        ]);
+
+        return $id;
     }
 
     public function getSurveyOverviews()

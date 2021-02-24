@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use Illuminate\Support\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface SurveyRepositoryInterface
 {
@@ -17,7 +17,7 @@ interface SurveyRepositoryInterface
     /**
      * 今あるアンケートの一覧を取得
      */
-    public function getSurveyOverviews():Collection;
+    public function getSurveyOverviews():LengthAwarePaginator;
 
     /**
      * uuidを受け取りそのアンケートの情報、質問内容を返す

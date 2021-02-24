@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $survey = Survey::factory(10)->create();
+        $survey = Survey::factory(60)->create();
         $survey->each(function ($s) {
             $s->questions()->saveMany(Question::factory(5)->make());
         });
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $questions->each(function ($q) {
-            $q->results()->saveMany(Result::factory(2)
+            $q->results()->saveMany(Result::factory(10)
             ->state([
                 'survey_id' => $q->survey_id,
                 'question_number' => $q->question_number,

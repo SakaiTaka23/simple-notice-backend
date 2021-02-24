@@ -4,7 +4,7 @@ namespace App\Service\Production;
 
 use App\Models\Survey;
 use App\Service\SurveyRepositoryInterface;
-use Illuminate\Support\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,9 +31,9 @@ class SurveyRepository implements SurveyRepositoryInterface
         return $id;
     }
 
-    public function getSurveyOverviews():Collection
+    public function getSurveyOverviews():LengthAwarePaginator
     {
-        return DB::table('surveys')->select(['id','title','description','owner','from','to'])->get();
+        return DB::table('surveys')->select(['id','title','description','owner','from','to'])->paginate(10);
     }
 
     public function getSurveyQuestions(string $uuid):object

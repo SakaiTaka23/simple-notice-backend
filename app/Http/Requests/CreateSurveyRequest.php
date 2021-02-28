@@ -23,7 +23,7 @@ class CreateSurveyRequest extends ApiRequest
             'questions' => ['required','array'],
 
             'questions.*.title' => ['required','string'],
-            'questions.*.type' => ['required',Rule::in(['text','check','radio'])],
+            'questions.*.type' => ['required',Rule::in(['text','checkbox','radio'])],
             'questions.*.is_required' => ['required','boolean'],
             'questions.*.choice' => ['array'],
             'questions.*.choice.*' => ['string'],

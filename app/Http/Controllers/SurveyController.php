@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\SearchFromIdRequest;
+use App\Http\Requests\SurveyOverviewRequest;
 use App\Service\QuestionRepositoryInterface;
-use Illuminate\Http\Request;
-
 use App\Service\SurveyRepositoryInterface;
+use Illuminate\Http\Request;
 
 class SurveyController extends Controller
 {
@@ -45,9 +45,13 @@ class SurveyController extends Controller
      * 返り値の情報はまだ未定
      * @return obj json
      */
-    public function getSurveys()
+    public function getSurveys(SurveyOverviewRequest $request)
     {
-        $surveys = json_encode($this->repository->getSurveyOverviews());
+        $status = $request->status;
+        if (is_null($status)) {
+            $status = 'now';
+        }
+        $surveys = json_encode($this->repository->getSurveyOverviews($status));
         return $surveys;
     }
 

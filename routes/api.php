@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/survey', [SurveyController::class,'getSurveys']);
+Route::get('/surveys', [SurveyController::class,'getSurveys']);
+Route::get('/surveys/{status}', [SurveyController::class,'getSurveys']);
+
 Route::post('/survey', [SurveyController::class,'createSurvey']);
 
 Route::get('/survey/{uuid}/result', [ResultController::class,'showResult']);

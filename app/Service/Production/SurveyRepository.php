@@ -4,9 +4,11 @@ namespace App\Service\Production;
 
 use App\Models\Survey;
 use App\Service\SurveyRepositoryInterface;
+use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Query\Builder;
 
 class SurveyRepository implements SurveyRepositoryInterface
 {
@@ -31,9 +33,23 @@ class SurveyRepository implements SurveyRepositoryInterface
         return $id;
     }
 
-    public function getSurveyOverviews():LengthAwarePaginator
+    public function getSurveyOverviews(string $status):LengthAwarePaginator
     {
-        return DB::table('surveys')->select(['id','title','description','owner','from','to'])->paginate(10);
+        $query = DB::table('surveys')->select(['id','title','description','owner','from','to']);
+        $query = $this->surveyStatus($query, $status);
+        $query = $query->paginate(10);
+        return $query;
+    }
+
+    private function surveyStatus(Builder $query, string $status):Builder
+    {
+        if ($status == 'now') {
+            return $query->where('from', '<', Carbon::today())->where('to', '>', Carbon::today());
+        } elseif ($status == 'future') {
+            return $query->where('from', '>', Carbon::today());
+        } elseif ($status == 'past') {
+            return $query->where('to', '<', Carbon::today());
+        }
     }
 
     public function getSurveyQuestions(string $uuid):object

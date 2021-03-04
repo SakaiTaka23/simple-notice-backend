@@ -16,8 +16,11 @@ interface SurveyRepositoryInterface
 
     /**
      * 今あるアンケートの一覧を取得
+     * statusは条件を表す 現在、未来、過去
+     *
+     * @param string $status 状態を表す引数 now | future | past
      */
-    public function getSurveyOverviews():LengthAwarePaginator;
+    public function getSurveyOverviews(string $status):LengthAwarePaginator;
 
     /**
      * uuidを受け取りそのアンケートの情報、質問内容を返す

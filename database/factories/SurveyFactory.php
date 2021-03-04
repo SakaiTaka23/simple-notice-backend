@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Survey;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,8 +29,8 @@ class SurveyFactory extends Factory
             'title'=>$this->faker->sentence,
             'description'=>$this->faker->sentence,
             'delete_pass'=>Hash::make('password'),
-            'from' =>now(),
-            'to'=>now(),
+            'from' =>Carbon::yesterday(),
+            'to'=>Carbon::tomorrow(),
         ];
     }
 }

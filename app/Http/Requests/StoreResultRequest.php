@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\isAvailable;
+
 class StoreResultRequest extends ApiRequest
 {
     /**
@@ -12,7 +14,7 @@ class StoreResultRequest extends ApiRequest
     public function rules()
     {
         return [
-            'uuid' => 'exists:surveys,id'
+            'uuid' => ['exists:surveys,id',new isAvailable]
         ];
     }
 

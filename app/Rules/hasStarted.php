@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
-class isAvailable implements Rule
+class hasStarted implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,8 +25,8 @@ class isAvailable implements Rule
      */
     public function passes($attribute, $value)
     {
-        $period = DB::table('surveys')->select('from', 'to')->where('id', $value)->first();
-        if (today() > $period->from && today() < $period->to) {
+        $period = DB::table('surveys')->select('from')->where('id', $value)->first();
+        if (today() >= $period->from) {
             return true;
         }
         return false;
@@ -39,6 +39,6 @@ class isAvailable implements Rule
      */
     public function message()
     {
-        return 'The survey is not available';
+        return 'The survey has not started yet';
     }
 }

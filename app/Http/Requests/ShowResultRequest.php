@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\hasStarted;
+
 class ShowResultRequest extends ApiRequest
 {
     /**
@@ -12,7 +14,7 @@ class ShowResultRequest extends ApiRequest
     public function rules()
     {
         return [
-            'uuid' => 'exists:surveys,id'
+            'uuid' => ['bail','exists:surveys,id',new hasStarted]
         ];
     }
 

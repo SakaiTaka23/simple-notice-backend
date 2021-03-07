@@ -14,7 +14,7 @@ class StoreResultRequest extends ApiRequest
     public function rules()
     {
         return [
-            'uuid' => ['exists:surveys,id',new isAvailable]
+            'uuid' => ['bail','exists:surveys,id',new isAvailable]
         ];
     }
 

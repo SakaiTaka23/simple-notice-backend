@@ -14,7 +14,8 @@ class DeleteSurveyRequest extends ApiRequest
     public function rules()
     {
         return [
-            'uuid' => ['bail','exists:surveys,id',new hasNotStarted]
+            'uuid' => ['bail','exists:surveys,id',new hasNotStarted],
+            'password' => ['required','string'],
         ];
     }
 

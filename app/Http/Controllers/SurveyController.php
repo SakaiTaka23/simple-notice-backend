@@ -49,15 +49,14 @@ class SurveyController extends Controller
      * @return ?
      */
     public function deleteSurvey(DeleteSurveyRequest $request){
-        $uuid = '0ed43b76-1bd5-33f6-84bb-ef47e4f6622b';
-        // 後でリクエストの中に組み込む
-        $pass = 'password';
+        $uuid = $request->uuid;
+        $password = $request->password;
 
-        $passMatches = $this->survey->checkPassword($uuid,$pass);
+        $passMatches = $this->survey->checkPassword($uuid,$password);
         abort_if(!$passMatches,403);
 
         $this->repository->deleteSurvey($uuid);
-        return 'deleted!';
+        return;
     }
 
     /**

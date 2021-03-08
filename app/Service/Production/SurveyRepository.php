@@ -44,11 +44,11 @@ class SurveyRepository implements SurveyRepositoryInterface
     private function surveyStatus(Builder $query, string $status):Builder
     {
         if ($status == 'now') {
-            return $query->where('from', '<', Carbon::today())->where('to', '>', Carbon::today());
+            return $query->where('from', '<=', Carbon::today())->where('to', '>=', Carbon::today())->orderBy('to');
         } elseif ($status == 'future') {
-            return $query->where('from', '>', Carbon::today());
+            return $query->where('from', '>', Carbon::today())->orderBy('from');
         } elseif ($status == 'past') {
-            return $query->where('to', '<', Carbon::today());
+            return $query->where('to', '<', Carbon::today())->orderBy('to');
         }
     }
 

@@ -20,7 +20,7 @@ Route::get('/surveys', [SurveyController::class,'getSurveys']);
 Route::get('/surveys/{status}', [SurveyController::class,'getSurveys']);
 
 Route::post('/survey', [SurveyController::class,'createSurvey']);
-
 Route::get('/survey/{uuid}/result', [ResultController::class,'showResult']);
 Route::get('/survey/{uuid}', [SurveyController::class,'searchFromId']);
 Route::post('/survey/{uuid}', [ResultController::class,'storeResult']);
+Route::delete('/survey/{uuid}',[SurveyController::class,'deleteSurvey']);

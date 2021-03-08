@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateSurveyRequest;
+use App\Http\Requests\DeleteSurveyRequest;
 use App\Http\Requests\SearchFromIdRequest;
 use App\Http\Requests\SurveyOverviewRequest;
 use App\Service\QuestionRepositoryInterface;
@@ -38,6 +39,15 @@ class SurveyController extends Controller
         }
 
         return $id;
+    }
+
+    /**
+     * アンケートの削除を行う
+     * アンケートが開始されていない場合のみ有効
+     * @return ?
+     */
+    public function deleteSurvey(DeleteSurveyRequest $request){
+        return 'deleted!';
     }
 
     /**

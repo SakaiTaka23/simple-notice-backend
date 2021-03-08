@@ -17,6 +17,11 @@ class SurveyRepository implements SurveyRepositoryInterface
         $this->survey = $survey;
     }
 
+    public function deleteSurvey(string $uuid): void
+    {
+        DB::table('surveys')->where('id',$uuid)->delete();
+    }
+
     public function saveSurvey(array $survey_data):string
     {
         $id = uniqid();
@@ -39,6 +44,12 @@ class SurveyRepository implements SurveyRepositoryInterface
         $query = $this->surveyStatus($query, $status);
         $query = $query->paginate(10);
         return $query;
+    }
+
+    public function getSurveyPassword(string $uuid): string
+    {
+        $query = DB::table('surveys')->select(['delete_pass'])->where('id', $uuid)->first();
+        return $query->delete_pass;
     }
 
     private function surveyStatus(Builder $query, string $status):Builder

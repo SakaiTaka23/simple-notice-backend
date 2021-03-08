@@ -8,12 +8,14 @@ use App\Http\Requests\SearchFromIdRequest;
 use App\Http\Requests\SurveyOverviewRequest;
 use App\Service\QuestionRepositoryInterface;
 use App\Service\SurveyRepositoryInterface;
+use App\Service\SurveyServiceInterface;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
 {
-    public function __construct(SurveyRepositoryInterface $repository, QuestionRepositoryInterface $questionRepository)
+    public function __construct(SurveyServiceInterface $survey,SurveyRepositoryInterface $repository, QuestionRepositoryInterface $questionRepository)
     {
+        $this->survey = $survey;
         $this->repository = $repository;
         $this->questionRepository = $questionRepository;
     }
@@ -47,6 +49,14 @@ class SurveyController extends Controller
      * @return ?
      */
     public function deleteSurvey(DeleteSurveyRequest $request){
+        $uuid = '0ed43b76-1bd5-33f6-84bb-ef47e4f6622b';
+        // 後でリクエストの中に組み込む
+        $pass = 'password';
+
+        $passMatches = $this->survey->checkPassword($uuid,$pass);
+        abort_if(!$passMatches,403);
+
+        $this->repository->deleteSurvey($uuid);
         return 'deleted!';
     }
 

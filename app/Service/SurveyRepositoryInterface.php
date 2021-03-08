@@ -8,6 +8,13 @@ interface SurveyRepositoryInterface
 {
 
     /**
+     * uuidを受け取り対象のアンケートを削除
+     * 
+     * @param string $uuid アンケートのuuid
+     */
+    public function deleteSurvey(string $uuid):void;
+
+    /**
      * データを受け取りアンケートを作成
      *
      * @param array $survey_data アンケートに関する情報が入った配列
@@ -21,6 +28,15 @@ interface SurveyRepositoryInterface
      * @param string $status 状態を表す引数 now | future | past
      */
     public function getSurveyOverviews(string $status):LengthAwarePaginator;
+
+    /**
+     * uuidを受け取りそのパスワードを返す
+     * 
+     * @param $uuid そのアンケートのid
+     * 
+     * @return object パスワードそのもの
+     */
+    public function getSurveyPassword(string $uuid):string;
 
     /**
      * uuidを受け取りそのアンケートの情報、質問内容を返す

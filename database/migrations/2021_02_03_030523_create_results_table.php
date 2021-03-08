@@ -15,7 +15,7 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->string('survey_id');
+            $table->foreignUuid('survey_id')->references('id')->on('surveys')->cascadeOnDelete();
             $table->integer('question_number')->default(0);
             $table->string('answer')->nullable();
             $table->integer('count')->default(1);

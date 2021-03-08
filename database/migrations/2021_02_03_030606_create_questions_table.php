@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->uuid('survey_id');
+            $table->foreignUuid('survey_id')->references('id')->on('surveys')->cascadeOnDelete();
             $table->integer('question_number');
             $table->string('type');
             $table->string('title');
